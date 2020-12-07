@@ -1,0 +1,13 @@
+//table styles
+
+.table {
+    border-collapse: collapse;
+    width: 100%;
+    
+    & th {
+        padding: 0.25rem;
+        text-align: left;
+        border: 1px solid #ccc;
+        
+    }
+}

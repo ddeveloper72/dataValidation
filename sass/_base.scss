@@ -20,3 +20,9 @@ body {
     font-size: 1.4rem;
     min-height: 100vh; //for testing
 }
+
+.container, .buttons {
+    margin: 0 auto;
+    width: 80vw;
+    overflow: auto;
+}

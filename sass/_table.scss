@@ -1,13 +1,30 @@
 //table styles
 
-.table {
+table.gridtable {
     border-collapse: collapse;
     width: 100%;
+    overflow: auto;
     
     & th {
         padding: 0.25rem;
         text-align: left;
         border: 1px solid #ccc;
+        background-color: #F6B4A5;
         
     }
+
+    & td {
+        padding: 0.25rem;
+        text-align: left;
+        border: 1px solid #ccc;
+
+    }
 }
+
+.badrowcount {
+    background-color: coral;
+ }
+
+.notnumeric {
+    background-color: yellow;
+ }

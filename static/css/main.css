@@ -1,0 +1,57 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+html {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'open sans', sans-serif;
+  font-weight: 800;
+  font-size: 1.4rem;
+  min-height: 100vh;
+}
+
+.container, .buttons {
+  margin: 0 auto;
+  width: 80vw;
+  overflow: auto;
+}
+
+table.gridtable {
+  border-collapse: collapse;
+  width: 100%;
+  overflow: auto;
+}
+
+table.gridtable th {
+  padding: 0.25rem;
+  text-align: left;
+  border: 1px solid #ccc;
+  background-color: #F6B4A5;
+}
+
+table.gridtable td {
+  padding: 0.25rem;
+  text-align: left;
+  border: 1px solid #ccc;
+}
+
+.badrowcount {
+  background-color: coral;
+}
+
+.notnumeric {
+  background-color: yellow;
+}

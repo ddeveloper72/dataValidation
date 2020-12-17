@@ -7,11 +7,12 @@ const requiredError = (headerName, rowNumber, columnNumber) => {
 const validateError = (headerName, rowNumber, columnNumber) => {
     return `<div class="red">${headerName} is not valid in the <strong>${rowNumber} row</strong> / <strong>${columnNumber} column</strong></div>`
 }
-const uniqueError = (headerName, rowNumber, columnNumber) => {
+const uniqueError = (headerName) => {
     return `<div class="red">${headerName} is not unique</div>`
 }
 const isEmailValid = function (email) {
-    const reqExp = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/
+    // firstname.lasname@commpany.domain limited to 3 letters & 2 letters respectively
+    const reqExp = /[A-Za-z-]+\.[A-Za-z-0-9._%+-]+@([a-z-]{3,3})+\.[a-z]{2,2}$/
     return reqExp.test(email)
 }
 // const isPasswordValid = function (password) {

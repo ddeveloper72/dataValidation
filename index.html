@@ -1,39 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="static/css/main.css">
     
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="static/css/main.css">
-    </head>
+</head>
+
+<body>
+    <input type="file" accept=".csv" id="file" />
+    <button class="button" type="button" id="load_data" name="load_data">Load Data</button>
     
-    <body>
-        <input type="file" id="file"> 
-        <input type="button" id="viewfile" value="Import file" />
+    <div id="invalidMessages"></div>
 
-        <table class="table" id="tableMain">
-            <thead>
-                <th>firstName</th>
-                <th>lastName</th>
-                <th>middleName</th>
-                <th>profNumber</th>
-                <th>jobDescription</th>
-                <th>jobLocation</th>
-                <th>employeeType</th>
-                <th>Tel</th>
-                <th>coWorkStatus</th>
-                <th>currentUsername</th>
-                <th>currentEmail</th>
-            </thead>
-            <tbody>
+    <div id="account_table"></div>
+        
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="dist/main.js"></script>
+    <script src="static/js/validator.js"></script>
+</body>
 
-            </tbody>
-        </table> 
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="static\js\validator.js"></script>
-    </body>
-            
 </html>

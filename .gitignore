@@ -2,4 +2,3 @@ csv_files/*
 .vscode
 node_modules/*
 package-lock.json
-.gitignore

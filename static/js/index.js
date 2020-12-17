@@ -1,4 +1,4 @@
-import CSVFileValidator from 'csv-file-validator';
+import CSVFileValidator from '../js/csv-file-validator'
 
 
 const requiredError = (headerName, rowNumber, columnNumber) => {
@@ -7,7 +7,7 @@ const requiredError = (headerName, rowNumber, columnNumber) => {
 const validateError = (headerName, rowNumber, columnNumber) => {
     return `<div class="red">${headerName} is not valid in the <strong>${rowNumber} row</strong> / <strong>${columnNumber} column</strong></div>`
 }
-const uniqueError = (headerName) => {
+const uniqueError = (headerName, rowNumber, columnNumber) => {
     return `<div class="red">${headerName} is not unique</div>`
 }
 const isEmailValid = function (email) {
@@ -43,7 +43,6 @@ const CSVConfig = {
             name: 'Prof Number',
             inputName: 'profNumber',
             required: false,
-            requiredError,
             unique: true,
             uniqueError
         },
@@ -51,35 +50,31 @@ const CSVConfig = {
             name: 'Job Description',
             inputName: 'jobDescription',
             required: true,
-            requiredError,
-            isArray: true
+            requiredError
         },
         {
-            name: 'Work Location',
+            name: 'Job Location',
             inputName: 'jobLocation',
             required: true,
-            requiredError,
-            isArray: true
+            requiredError
         },
         {
-            name: 'Staff / Agency',
+            name: 'Staff/Agency',
             inputName: 'employeeType',
             required: true,
-            requiredError, isArray: true
+            requiredError
         },
         {
-            name: 'Phone Number',
+            name: 'Contact Number',
             inputName: 'contactNumber',
             required: true,
-            requiredError,
-            isArray: true
+            requiredError
         },
         {
             name: 'Company',
             inputName: 'company',
             required: true,
-            requiredError,
-            isArray: true
+            requiredError
         },
         {
             name: 'Login Name',
@@ -91,7 +86,7 @@ const CSVConfig = {
         },
         {
             name: 'Email',
-            inputName: 'userEmail',
+            inputName: 'email',
             required: false,
             requiredError,
             unique: true,
@@ -99,12 +94,13 @@ const CSVConfig = {
             validate: isEmailValid,
             validateError
         },
-    ]
+    ],
+    isHeaderNameOptional: false // default (optional)
 }
 
 
 
-document.getElementById('import').onchange = function(event) {
+document.getElementById('file').onchange = function(event) {
     CSVFileValidator(event.target.files[0], CSVConfig)
         .then(csvData => {
             csvData.inValidMessages.forEach(message => {

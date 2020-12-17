@@ -1,6 +1,6 @@
 //table styles
 
-table.gridtable {
+table.table {
     border-collapse: collapse;
     width: 100%;
     overflow: auto;
@@ -17,14 +17,11 @@ table.gridtable {
         padding: 0.25rem;
         text-align: left;
         border: 1px solid #ccc;
-
     }
+
+    & tr:last-child {
+        display: none;
+    }
+    
 }
 
-.badrowcount {
-    background-color: coral;
- }
-
-.notnumeric {
-    background-color: yellow;
- }

@@ -1,58 +1,68 @@
 $(document).ready(function(){
 
-    $('#file').change(function(e) {
-        var file = e.target.files[0];
+    // validate file type permitted for upload
+    $('#file[type=file]').change(function(e) {
+        var file = e.target.files[0]; 
+        console.log('Name of file: ' + file.name); 
+        // var filePath = (window.URL || window.webkitURL).createObjectURL(file);
+        // console.log("✔ "+ filePath);
+
         
-        console.log('Name of file: ' + file.name);    
         
         // use regex to replace everything preceding and inclusive of the . in the file name
         var extension = file.name.replace(/^.*\./, "");
         
         console.log('File type: ' + extension);
         
-        // parse the file type to insure it is excel
-        
+        // parse the file name type to ensure it is excel or csv file format        
         if (extension == 'xls' || extension == 'xlsx' || extension == 'csv') {
-            console.log("processing excel file...");
+            // console.log("processing " + extension + " file...");
+            alert("processing " + extension + " file...")
             
-
-            $('#import').click(function() {
-            var reader = new FileReader();
-            reader.onload = (e) => {
-                // get rows into the array
-                var theRows = e.target.result.split('\n');
-                // console.log(theRows);
-                // loop through each rows
-                for (var row = 0; row < theRows.length; row++) {
-                    // build new table row for validation
-                    var nwRow = "";
-
-                    // get the next columns into an array
-                    var columns = theRows[row].split(",");
-                    // get number of columns
-                    var colCount = columns.length;
-                    var newRow = "";
-                    
-                    if(colCount!=11) {
-                        // incorrect number of columns => inject new row into the dom with notification
-                        newRow = "<tr class='badrowcount'><td colspan='11'>Incorrect number of columns</td></tr>"
-                    } else {
-                        // test the data in the 1st column
-                        newRow = "<tr><td>" + columns[0] + "</td><td>" + columns[1] + "</td><td>" + columns[2] + "</td><td>" + columns[3] + "</td><td>" + columns[4] + "</td><td>" + columns[5] + "</td><td>" + columns[6] + "</td><td>" + columns[7] + "</td><td>" + columns[8] + "</td><td>" + columns[9] + "</td><td>" + columns[10] + "</td></tr>";
-                    }
-                    $('#tableMain').append(newRow);
-                }
-            }
-            reader.readAsText($('#file')[0].files[0]);
-            alert("processing excel file...")
-        });
-
+            // try {
+            //     localStorage.setItem("storageFiles", file.name) || {};
+            //     localStorage.setItem("filePath", filePath);
+            // }
+            // catch (e) {
+            //     console.log("saving to local storage failed: " + e);
+            // }
 
         } else {
-            console.log("processing error... file type not supported!");
-            alert("processing error... file type not supported!")
+            // console.log("processing error... " + extension + " files are not supported!");
+            alert("processing error... " + extension + " files are not supported!")
         }
-    });  
+    });
     
-    
+    // create table from csv file
+    $('#load_data').click(function () {
+        var reader = new FileReader();
+        reader.onload = function(data) {
+            // user regular expression to split csv rows
+            var account_data = data.target.result.split(/\r?\n|\r/);
+            // open table tag
+            var table_data = '<table class="table">';
+            for(var count = 0; count < account_data.length; count++) {
+                // define the cell data by splitting each cell with the delimiter marker
+                var cell_data = account_data[count].split(",");
+                // print each row of data, incrementing to a new row per length of the cell data
+                // open table row tag
+                table_data += '<tr>';
+                for(var cell_count = 0; cell_count < cell_data.length; cell_count++) {
+                    // identify the 1st row containing the table header
+                    if(count === 0) {
+                        table_data += '<th>' + cell_data[cell_count] + '</th>';
+                    } else {
+                        // any row not the 1st is the table data
+                        table_data += '<td>' + cell_data[cell_count] + '</td>';
+                    }
+                }
+                // close table row tag
+                table_data += '</tr>';
+            }
+            // close table tag
+            table_data += '</table>';
+            $('#account_table').html(table_data);
+        }
+        reader.readAsText($("#file")[0].files[0]);
+    });
 });

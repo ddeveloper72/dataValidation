@@ -29,29 +29,25 @@ body {
   overflow: auto;
 }
 
-table.gridtable {
+table.table {
   border-collapse: collapse;
   width: 100%;
   overflow: auto;
 }
 
-table.gridtable th {
+table.table th {
   padding: 0.25rem;
   text-align: left;
   border: 1px solid #ccc;
   background-color: #F6B4A5;
 }
 
-table.gridtable td {
+table.table td {
   padding: 0.25rem;
   text-align: left;
   border: 1px solid #ccc;
 }
 
-.badrowcount {
-  background-color: coral;
-}
-
-.notnumeric {
-  background-color: yellow;
+table.table tr:last-child {
+  display: none;
 }

@@ -36,20 +36,20 @@ $(document).ready(function(){
     // create table from csv file
     $('#load_data').click(function () {
         var reader = new FileReader();
-        reader.onload = function(data) {
+        reader.onload = (data) => {
             // user regular expression to split csv rows
             var account_data = data.target.result.split(/\r?\n|\r/);
             // open table tag
             var table_data = '<table class="table">';
-            for(var count = 0; count < account_data.length; count++) {
+            for (var count = 0; count < account_data.length; count++) {
                 // define the cell data by splitting each cell with the delimiter marker
                 var cell_data = account_data[count].split(",");
                 // print each row of data, incrementing to a new row per length of the cell data
                 // open table row tag
                 table_data += '<tr>';
-                for(var cell_count = 0; cell_count < cell_data.length; cell_count++) {
+                for (var cell_count = 0; cell_count < cell_data.length; cell_count++) {
                     // identify the 1st row containing the table header
-                    if(count === 0) {
+                    if (count === 0) {
                         table_data += '<th>' + cell_data[cell_count] + '</th>';
                     } else {
                         // any row not the 1st is the table data

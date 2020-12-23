@@ -2,13 +2,13 @@ import CSVFileValidator from '../js/csv-file-validator'
 
 
 const requiredError = (headerName, rowNumber, columnNumber) => {
-    return `<div class="red">${headerName} is required in the <strong>${rowNumber} row</strong> / <strong>${columnNumber} column</strong></div>`
+    return `<li class="list-group-item">${headerName} is required in the <strong>${rowNumber} row</strong> / <strong>${columnNumber} column</strong></li>`
 }
 const validateError = (headerName, rowNumber, columnNumber) => {
-    return `<div class="red">${headerName} is not valid in the <strong>${rowNumber} row</strong> / <strong>${columnNumber} column</strong></div>`
+    return `<li class="list-group-item">${headerName} is not valid in the <strong>${rowNumber} row</strong> / <strong>${columnNumber} column</strong></li>`
 }
 const uniqueError = (headerName) => {
-    return `<div class="red">${headerName} is not unique</div>`
+    return `<li class="list-group-item">${headerName} is not unique</li>`
 }
 const isEmailValid = function (email) {
     // firstname.lasname@commpany.domain limited to 3 letters & 2 letters respectively
@@ -41,7 +41,7 @@ const CSVConfig = {
             requiredError
         },
         {
-            name: 'Prof Number',
+            name: 'Professional Number',
             inputName: 'profNumber',
             required: false,
             unique: true,
@@ -72,7 +72,7 @@ const CSVConfig = {
             requiredError
         },
         {
-            name: 'Company',
+            name: 'Company Name',
             inputName: 'company',
             required: true,
             requiredError
@@ -96,7 +96,7 @@ const CSVConfig = {
             validateError
         },
     ],
-    isHeaderNameOptional: false // default (optional)
+    isHeaderNameOptional: true // default (optional)
 }
 
 

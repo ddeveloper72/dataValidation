@@ -15,32 +15,16 @@ $(document).ready(function(){
         console.log('File type: ' + extension);
         
         // parse the file name type to ensure it is excel or csv file format        
-        if (extension == 'xls' || extension == 'xlsx' || extension == 'csv') {
+        if (extension == 'csv') {
             // console.log("processing " + extension + " file...");
             alert("processing " + extension + " file...")
-            
-            // try {
-            //     localStorage.setItem("storageFiles", file.name) || {};
-            //     localStorage.setItem("filePath", filePath);
-            // }
-            // catch (e) {
-            //     console.log("saving to local storage failed: " + e);
-            // }
-
-        } else {
-            // console.log("processing error... " + extension + " files are not supported!");
-            alert("processing error... " + extension + " files are not supported!")
-        }
-    });
-    
-    // create table from csv file
-    $('#load_data').click(function () {
-        var reader = new FileReader();
-        reader.onload = (data) => {
+            // read file in browser
+            var reader = new FileReader();
+            reader.onload = (data) => {
             // user regular expression to split csv rows
             var account_data = data.target.result.split(/\r?\n|\r/);
             // open table tag
-            var table_data = '<table class="table">';
+            var table_data = '<table class="table table-hover">';
             for (var count = 0; count < account_data.length; count++) {
                 // define the cell data by splitting each cell with the delimiter marker
                 var cell_data = account_data[count].split(",");
@@ -53,16 +37,22 @@ $(document).ready(function(){
                         table_data += '<th>' + cell_data[cell_count] + '</th>';
                     } else {
                         // any row not the 1st is the table data
-                        table_data += '<td>' + cell_data[cell_count] + '</td>';
+                        table_data += '<td class="table-success table-striped table-sm">' + cell_data[cell_count] + '</td>';
                     }
                 }
                 // close table row tag
-                table_data += '</tr>';
+                table_data += '</thead>';
             }
             // close table tag
             table_data += '</table>';
             $('#account_table').html(table_data);
         }
         reader.readAsText($("#file")[0].files[0]);
+
+        } else {
+            // console.log("processing error... " + extension + " files are not supported!");
+            alert("processing error... " + extension + " files are not supported!")
+        }
     });
+
 });

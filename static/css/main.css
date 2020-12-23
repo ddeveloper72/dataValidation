@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
@@ -29,23 +30,37 @@ body {
   overflow: auto;
 }
 
+.errorMessages {
+  font-size: 1.4rem;
+}
+
+.errorMessages li {
+  color: chocolate;
+  list-style-type: "→";
+}
+
+.card-header {
+  background-color: #e6a86e;
+}
+
 table.table {
   border-collapse: collapse;
   width: 100%;
   overflow: auto;
+  margin: 1rem;
 }
 
 table.table th {
   padding: 0.25rem;
   text-align: left;
   border: 1px solid #ccc;
-  background-color: #F6B4A5;
+  background-color: #729c5a;
 }
 
 table.table td {
   padding: 0.25rem;
   text-align: left;
-  border: 1px solid #ccc;
+  border: 1px solid #a3afa0;
 }
 
 table.table tr:last-child {

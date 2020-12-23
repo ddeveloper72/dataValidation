@@ -1,0 +1,14 @@
+
+.errorMessages {
+    font-size: 1.4rem;
+    
+    & li {
+        color: chocolate;
+        list-style-type: "→";
+    }
+
+}
+
+.card-header {
+        background-color: rgb(230, 168, 110);
+}
